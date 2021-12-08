@@ -1,0 +1,259 @@
+{% extends "shop/base.html" %}
+<!-- {% load i18n %} -->
+{% load static %}
+
+{% block title %}
+	Cart
+{% endblock %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Cart</h3>
+						<ul class="breadcrumb-tree">
+							<li>
+								<a href="{% url 'shop:product_list' %}">
+									Home
+								</a>
+							</li>
+							<li class="active">Cart</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+
+{% with total_items=cart|length %}
+	{% if total_items > 0 %}
+		<center><h1>My Cart</h1></center>
+	
+
+<table class="table table-bordered table-hover table-striped print-table order-table">
+    <thead>
+        <tr class="bg-primary" style="background-color: #333">
+            <th class="text-left" style="width:10%">
+            	Product
+            </th>
+            <th class="text-right" style="width:10%">
+            	Unit Price
+            </th>
+            <th class="text-right add-tax-th" style="width:10%">
+            	QTY
+            </th>
+            <th class="text-right" style="width:10%">
+            	Price
+            </th>                          
+        </tr>
+    </thead>
+	{% for item in cart %}
+		{% with product=item.product %}
+    <tbody id="render-more-item-tr">
+        <tr class="count-tr" id="render-more-item2">
+
+	        <td class="border-bottom" style="word-break: keep-all;">
+	            <div class="media">
+	                <a class="thumbnail pull-left" 
+	                	href="{{ product.get_absolute_url }}"> 
+	                	<img class="media-object" src="{% if product.image %}{{ product.image.url}}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
+	                	style="width: 50px; height: 50px;">
+	                </a>
+	                <div class="media-body">
+	                    <h6 class="media-heading">
+	                    	<b>{{ product.name }}</b>
+	                    </h6>
+	                    <span style="font-size: 11px;">
+	                    	&nbsp;Status: </span>
+	                    <span class="text-success" style="font-size: 11px;">
+	                    	<strong>In Stock</strong>
+	                    </span>
+	                </div>
+	            </div>
+                                    
+            </td>
+            <td class="text-right border-bottom">
+                <span class="currency-symbol">$</span>
+                <span id="price0" class="dynamic-price">{{ product.price}}</span>
+            </td>
+            <td class="text-right" 
+            	style="text-align: right;font-size: 12px; line-height: 1.5; border-radius: 3px; ">
+	            <div class="add-to-cart row">
+	            		<form action="{% url 'cart:cart_add' product.id %}" 
+	            		method="post">
+							<div class="qty-label col-md-4">
+								<div class="input-number">
+									{{ item.update_quantity_form.quantity }}
+									{{ item.update_quantity_form.override }}
+									{% csrf_token %}
+									<span class="qty-up">+</span>
+									<span class="qty-down">-</span>
+								</div>
+							</div>
+						<div class="col-md-4">
+							<button type="submit" id="action-cart-qty-2" 
+	                    	class="col-md-4 update-cart-qty btn btn-success btn-xs">
+	                    	<i class="fa fa-refresh"></i>
+	                    	</button></form>
+	                    	<form action="{% url 'cart:cart_remove' product.id %}"
+							method="post">
+								{% csrf_token %}
+							<button type="submit" style="cursor: pointer;" 
+								class="remove-cart">
+			                	<i class="text-danger fa fa-times"></i>
+			                </button>
+						</form> 
+	                    </div>
+						
+					<div class="col-md-2">
+						
+					</div>
+				</div>
+				
+            </td>
+            <td class="text-right border-bottom">
+                <span class="currency-symbol">$</span>
+                <span>{{ item.total_price }}</span>
+
+            </td>            
+        </tr>
+    </tbody>
+    {% endwith %}
+{% endfor %}
+                               
+    <tfoot id="render-calculation">
+    	{% if cart.coupon %}
+        <tr>            
+            <td class="add-tax-colspan" style="text-align: right; border:0px;"></td>
+            <td class="text-left" style="width:20%; border-right: 0; background-color: lightgray;" colspan="2">
+                <h3>Subtotal</h3>
+                <h5>
+        {% blocktrans with code=cart.coupon.code discount=cart.coupon.discount %}
+                	{{ code }} coupon ({{ discount }}% off)
+        {% endblocktrans %}
+                </h5>
+            </td>
+            <td class="text-right" style="border-left: 0px; 
+            background-color: lightgray;">
+                <h3>
+                    <span class="currency-symbol">
+                    	$
+                    </span>
+                    
+                    <span id="sub-total">
+                		{{ cart.get_total_price|floatformat:2 }}
+
+                	</span>
+                </h3>
+                <h5 style="color: #D10024;">
+                    - ${{ cart.get_discount|floatformat:2 }}
+                </h5>
+            </td>           
+        </tr>
+        {% endif %}
+
+        <tr>            
+            <td class="add-tax-colspan" style="text-align: right; border:0px;"></td>
+            <td class="text-left" style="width:20%; border-right: 0;" colspan="2">
+                <h3>Total</h3>
+            </td>
+            <td class="text-right" style="border-left: 0px;">
+                <h3>
+                    <span class="currency-symbol">
+                    	$
+                    </span>
+                    <span id="sub-total">
+                	{{ cart.get_total_price_after_discount|floatformat:2 }}
+                    </span>
+                    
+                </h3>
+            </td>           
+        </tr>
+
+
+    </tfoot>
+</table>
+
+<p>Apply a coupon:</p>
+<form action="{% url "coupons:apply" %}" method="post">
+{{ coupon_apply_form }}
+<input type="submit" value="Apply">
+{% csrf_token %}
+</form>
+
+<div class="row">
+	<div class="col-md-4 col-lg-3">
+	</div>
+	<div class="col-md-4 col-lg-6">
+		
+<div class="btn-group btn-group-justified">
+
+    <div class="btn-group">
+    	<a href="{% url 'shop:product_list' %}" type="button" class="btn btn  primary-btn" 
+        id="order-pay-now" style="background-color: #5cb85c">
+             <i class="fa fa-arrow-circle-left"></i>
+    		Continue Shopping
+    	</a>
+                    
+    </div>
+
+    <div class="btn-group">
+        <a href="{% url 'orders:order_create' %}" type="button" class="btn btn  primary-btn" id="order-pay-now" style="background-color: #D10024">
+		Checkout <i class="fa fa-arrow-circle-right"></i>
+	</a>               
+    </div>           
+
+</div>
+</div>
+<div class="col-md-4 col-lg-3">
+</div>
+
+</div>
+
+{% else %}
+		<center><h1>Your cart is empty!</h1></center>
+
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	
+	<div class="col-md-4">
+		
+<div class="btn-group btn-group-justified">
+
+    <div class="btn-group">
+    	<a href="{% url 'shop:product_list' %}" type="button" class="btn btn  primary-btn" 
+        id="order-pay-now" style="background-color: #5cb85c">
+             Continue Shopping
+    	</a>
+                    
+    </div>
+    </div>
+   </div>
+</div>
+	{% endif %}
+{% endwith %}
+
+
+						</div>
+					</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+{% endblock %}

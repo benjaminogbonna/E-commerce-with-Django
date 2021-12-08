@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-20 14:18+0100\n"
+"PO-Revision-Date: 2020-09-21 13:31+0000\n"
+"Last-Translator: b'  <onyedikachi1997@gmail.com>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.3\n"
+
+#: .\cart\forms.py:9
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: .\cart\templates\cart\detail.html:6 .\cart\templates\cart\detail.html:18
+#: .\cart\templates\cart\detail.html:25
+msgid "Cart"
+msgstr "Carro"
+
+#: .\cart\templates\cart\detail.html:22
+msgid "Home"
+msgstr "Hogar"
+
+#: .\cart\templates\cart\detail.html:51
+msgid "Product"
+msgstr "Producto"
+
+#: .\cart\templates\cart\detail.html:54
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#: .\cart\templates\cart\detail.html:57
+msgid "QTY"
+msgstr "CANT"
+
+#: .\cart\templates\cart\detail.html:60
+msgid "Price"
+msgstr "Precio"
+
+#: .\cart\templates\cart\detail.html:81
+msgid "Status:"
+msgstr "Condición:"
+
+#: .\cart\templates\cart\detail.html:83
+msgid "In Stock"
+msgstr "En Provisión"
+
+#: .\cart\templates\cart\detail.html:145
+#, python-format
+msgid ""
+"\n"
+"                \t%(code)s coupon (%(discount)s%% off)\n"
+"        "
+msgstr ""
+"\n"
+"%(code)s cupón (%(discount)s%% off)"
+
+#: .\cart\templates\cart\detail.html:191
+msgid "Apply a coupon:"
+msgstr "Aplicar cupón"
+
+#: .\cart\templates\cart\detail.html:209 .\cart\templates\cart\detail.html:242
+msgid "Continue Shopping"
+msgstr "Continuar comprando"
+
+#: .\cart\templates\cart\detail.html:216 .\shop\templates\shop\base.html:188
+msgid "Checkout"
+msgstr "Comprar"
+
+#: .\cart\templates\cart\detail.html:228
+msgid "Your cart is empty!"
+msgstr "Tu carro está vacío!"
+
+#: .\coupons\forms.py:5
+msgid "Coupon"
+msgstr "Cupón"
+
+#: .\myshop\settings.py:120
+msgid "English"
+msgstr "Inglés"
+
+#: .\myshop\settings.py:121
+msgid "Spanish"
+msgstr "Español"
+
+#: .\myshop\urls.py:24
+msgid "admin/"
+msgstr "admin/"
+
+#: .\myshop\urls.py:25
+msgid "cart/"
+msgstr "carro/"
+
+#: .\myshop\urls.py:26
+msgid "orders/"
+msgstr "ordens/"
+
+#: .\myshop\urls.py:27
+msgid "payment/"
+msgstr "pago/"
+
+#: .\myshop\urls.py:28
+#| msgid "Coupon"
+msgid "coupons/"
+msgstr "Cupóns/"
+
+#: .\myshop\urls.py:29
+msgid "rosetta/"
+msgstr "roseta/"
+
+#: .\payment\urls.py:7
+msgid "process/"
+msgstr "proceso/"
+
+#: .\payment\urls.py:8
+msgid "done/"
+msgstr "hecho/"
+
+#: .\payment\urls.py:9
+msgid "canceled/"
+msgstr "cancelar/"
+
+#: .\shop\templates\shop\base.html:11
+msgid "My shop"
+msgstr "Mi tienda"
+
+#: .\shop\templates\shop\base.html:64
+msgid "My Account"
+msgstr "Mi informe"
+
+#: .\shop\templates\shop\base.html:110
+msgid "Your Wishlist"
+msgstr "Tu Deseo-lista"
+
+#: .\shop\templates\shop\base.html:122 .\shop\templates\shop\base.html:127
+msgid "Your Cart"
+msgstr "Tu carro"
+
+#: .\shop\templates\shop\base.html:165
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t%(items)s item selected\n"
+"\t\t\t\t\t\t\t\t\t\t\t"
+msgid_plural ""
+"\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t%(items)s items selected\n"
+"\t\t\t\t\t\t\t\t\t\t\t<!-- Need code for refrences -->\n"
+"\t\t\t\t\t\t\t\t\t\t\t<!-- %(total_items)s item%(total_items|pluralize)s selected -->\n"
+"\t\t\t\t\t\t\t\t\t\t\n"
+"\t\t\t\t\t\t\t\t\t\t\t</small>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<h5>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tTOTAL: $ %(total)s \n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<!-- %(cart.get_total_price)s -->\n"
+"\t\t\t\t\t\t\t\t\t\t\t</h5>\n"
+"\t\t"
+msgstr[0] ""
+"\n"
+"%(items)s ítems escogido"
+msgstr[1] ""
+"\n"
+"TOTAL: $ %(total)s"
+
+#: .\shop\templates\shop\base.html:179
+msgid "Your cart is empty."
+msgstr "Tu carro está vacío."
+
+#: .\shop\templates\shop\base.html:185
+msgid "View Cart"
+msgstr "Vista Carro"
+
+#: .\shop\templates\shop\product\detail.html:120
+#: .\shop\templates\shop\product\list.html:89
+msgid "add to cart"
+msgstr "Añadir al carro"
+
+#: .\shop\templates\shop\product\list.html:9
+msgid "Products"
+msgstr "Productos"
+
+#: .\shop\templates\shop\product\list.html:27
+msgid "New Products"
+msgstr "Nuevo Productos"
+
+#: .\shop\templates\shop\product\list.html:33
+msgid "All"
+msgstr "Todos"
